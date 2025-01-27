@@ -17,8 +17,10 @@ def image_prediction(image_path):
         # decode predictions into a list of tuples(class_id, class_name, probability)
         decoded_predictions = decode_predictions(predictions, top=5)[0]
         print("Predictions: ", decoded_predictions)
+        for i, (class_id, class_name, probability) in enumerate(decoded_predictions):
+            print(f"{i + 1}: {class_name} ({probability:.2f})")
     except Exception as e:
-        print("Error occured: ", e)
+        raise ('Error occured: ', e)
 
 def main():
     while True:
